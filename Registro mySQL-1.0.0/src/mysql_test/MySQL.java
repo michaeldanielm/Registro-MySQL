@@ -49,7 +49,10 @@ public class MySQL {
         try {
             String Query = "CREATE TABLE " + name + ""
                     + "(ID VARCHAR(25),Nombre VARCHAR(50), Apellido VARCHAR(50),"
-                    + " Edad VARCHAR(3), Sexo VARCHAR(1))";
+                    + " Edad VARCHAR(3), Sexo VARCHAR(1))"
+                    + "Telefono VARCHAR(12),Direcion Fisica VARCHAR(50)"
+                    + "Correo Electronico VARCHAR(50),Nacionalidad VARCHAR(50)"
+                    + "Lugar de Nacimiento VARCHAR(50)";
             JOptionPane.showMessageDialog(null, "Se ha creado la base de tabla " + name + " de forma exitosa");
             Statement st = Conexion.createStatement();
             st.executeUpdate(Query);
@@ -58,13 +61,17 @@ public class MySQL {
         }
     }
 
-    public void insertData(String table_name, String ID, String name, String lastname, String age, String gender) {
+    public void insertData(String table_name, String ID, String name, String lastname, String age, String gender,String telefono,String Direcion,String Correo,String Nacionalidad,String Nacimiento) {
         try {
             String Query = "INSERT INTO " + table_name + " VALUES("
                     + "\"" + ID + "\", "
                     + "\"" + name + "\", "
                     + "\"" + lastname + "\", "
                     + "\"" + age + "\", "
+                    + "\"" + telefono + "\","
+                    + "\"" + Direcion + "\","
+                    + "\"" + Nacionalidad + "\","
+                    + "\"" + Nacimiento + "\","
                     + "\"" + gender + "\")";
             Statement st = Conexion.createStatement();
             st.executeUpdate(Query);
@@ -86,7 +93,11 @@ public class MySQL {
                 System.out.println("ID: " + resultSet.getString("ID") + " "
                         + "Nombre: " + resultSet.getString("Nombre") + " " + resultSet.getString("Apellido") + " "
                         + "Edad: " + resultSet.getString("Edad") + " "
-                        + "Sexo: " + resultSet.getString("Sexo"));
+                        + "Telefono: " + resultSet.getString("Telefono")+ " "                
+                        + "Direccion Fisica: " + resultSet.getString("Direccion Fisica")+ " "                
+                        + "Correo Electronico:  " + resultSet.getString("Correo Electronico")+ " "                
+                        + "Nacionalidad: " + resultSet.getString("Nacionalidad")+ " "                
+                        + "Lugar de Nacimineto: " + resultSet.getString("Lugar de Nacimineto"));
             }
 
         } catch (SQLException ex) {
@@ -104,6 +115,10 @@ public class MySQL {
             System.out.println(ex.getMessage());
             JOptionPane.showMessageDialog(null, "Error borrando el registro especificado");
         }
+    }
+
+    void insertData(String registros, String text, String text0, String text1, String text2, String text3, String text4, String text5, String text6, String toString) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
